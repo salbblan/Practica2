@@ -66,27 +66,30 @@ print("Filas sin unir:",
 
 print(renta_enriquecida)
 
-#renta["cod_mun"] = renta["cod_mun"].astype(str).str.strip()
-
+'''
 print("Filas originales:", len(renta))
 print("Filas filtradas:", len(renta_enriquecida))
-
+'''
 
 
 p =(
     ggplot(renta_enriquecida, aes(
         x="medida",
         y="valor",
-        fill="territorio"
+        fill="NOMBRE"
     ))
      + geom_col(position="dodge")
     + theme_minimal()
+    + theme(legend_position="bottom",
+    legend_title=element_text(size=8),
+    legend_text=element_text(size=6),
+    legend_key_size=6)
     + labs(
         title="Distribución de renta en Canarias por municipios",
         subtitle="Año 2022",
         x="Tramo de renta",
         y="Valor",
-        fill ="Isla",
+        fill ="Municipio",
         caption="Fuente: Instituto de Estadística de Canarias"
     )
 )
@@ -97,4 +100,32 @@ os.makedirs("outputs", exist_ok=True)
 p.save("outputs/grafico_renta_CanariasMunicipio.png", dpi=150, width=12, height=6)
 print("Gráfico guardado en outputs/grafico_renta_CanariasMunicipio.png")
 
-print(p)
+
+renta_enriquecida = renta_enriquecida[
+    renta_enriquecida["medida"] == "Pensiones"
+]
+p =(
+    ggplot(renta_enriquecida, aes(
+        x="medida",
+        y="valor",
+        fill="NOMBRE"
+    ))
+     + geom_col(position="dodge")
+    + theme_minimal()
+    + theme(legend_position="bottom",
+    legend_title=element_text(size=8),
+    legend_text=element_text(size=6),
+    legend_key_size=6)
+    + labs(
+        title="Distribución de pensiones en Canarias por municipios",
+        subtitle="Año 2022",
+        x="Pensiones",
+        y="Valor",
+        fill ="Municipio",
+        caption="Fuente: Instituto de Estadística de Canarias"
+    )
+)
+os.makedirs("outputs", exist_ok=True)
+
+p.save("outputs/grafico_CanariasMunicipioPensiones.png", dpi=150, width=12, height=6)
+print("Gráfico guardado en outputs/grafico_renta_CanariasMunicipioPensiones.png")
