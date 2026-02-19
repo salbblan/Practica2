@@ -54,8 +54,8 @@ def plot_renta_canarias_2022 (context: AssetExecutionContext, renta_2022: pd.Dat
   
     os.makedirs("outputs", exist_ok=True)
 
-    p.save("outputs/grafico_renta_Canarias.png", dpi=150, width=12, height=6)
-    print("Gráfico guardado en outputs/grafico_renta_Canarias.png")
+    p.save("outputs/grafico_renta_Canarias_2022.png", dpi=150, width=12, height=6)
+    print("Gráfico guardado en outputs/grafico_renta_Canarias_2022.png")
 
 
 
@@ -113,7 +113,7 @@ def plot_renta_municipios_2022(context: AssetExecutionContext, unir_datos: pd.Da
 @asset
 def renta_pensiones_2022(unir_datos: pd.DataFrame):
     # Filtra solo la medida "Pensiones"
-    df = unir_datos[unir_datos["medida"] == "Pensiones"].copy()
+    df = unir_datos[unir_datos["medida"] == "pensiones"].copy()
     return df
 
 
@@ -142,6 +142,6 @@ def plot_pensiones_municipios_2022(context: AssetExecutionContext, renta_pension
 
     os.makedirs("outputs", exist_ok=True)
 
-    p.save("outputs/grafico_CanariasMunicipioPensiones.png", dpi=150, width=12, height=6)
+    p.save("outputs/grafico_renta_CanariasMunicipioPensiones.png", dpi=150, width=12, height=6)
     print("Gráfico guardado en outputs/grafico_renta_CanariasMunicipioPensiones.png")
 
