@@ -1,0 +1,29 @@
+# Entornos virtuales
+venv/
+.env/
+.venv/
+
+# Archivos compilados
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Variables de entorno
+.env
+.env.*
+
+# Distribución
+build/
+dist/
+*.egg-info/
+
+# Logs
+*.log
+
+# VS Code
+.vscode/
+
+# Sistema
+.DS_Store
+Thumbs.db
